@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+var config = require('./config.js')
 
 const port = 3000
 const bodyParser = require('body-parser')
@@ -17,8 +18,9 @@ const upload = multer({storage: storage});
 
 
 
-app.get('/', (req,res) => res.sendFile('/webserver/server1/frontpage.html'));
-app.get('/stylesheet.css', (req,res)=> res.sendFile('/webserver/server1/stylesheet.css'))
+
+app.get('/', (req,res) => res.sendFile(config.baseFilePath+'frontpage.html'));
+app.get('/stylesheet.css', (req,res)=> res.sendFile(config.baseFilePath + '/stylesheet.css'))
 app.get('/uploads', (req, res, err) => {
     res.status(200).send("Gay Man");
 
